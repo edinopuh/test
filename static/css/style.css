@@ -1,0 +1,11 @@
+* {margin: 2px;}
+main {display: flex;
+      justify-content: center;
+}
+.reg_form {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+}
