@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Главная</title>
+    <style>
+        .carousel, .card, .card-body {height: 120px; }
+        .card-body {display: flex; align-items: stretch;}
+
+    </style>
+</head>
+<body>
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-8 col-12 mb-4">
+            <h1>Правила решения ребусов</h1>
+            <p>Ребус — это головоломка, в которой слова или фразы зашифрованы с помощью картинок, символов, букв, цифр и
+                других элементов. Для разгадывания ребусов существуют определённые правила.</p>
+
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">#1</h5>
+                                <p class="card-text">Названия предметов, изображённых в ребусе, читаются в именительном
+                                    падеже единственного
+                                    числа или множественного, если изображено несколько предметов.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">#2</h5>
+                                <p class="card-text">Перевёрнутое изображение означает, что слово читается задом
+                                    наперёд.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">#3</h5>
+                                <p class="card-text">Запятые указывают, какие буквы нужно отбросить.
+                                    Если запятая стоит слева от рисунка — отбрасываем первую букву,
+                                    справа — отбрасываем последнюю букву. Если стоят две запятые, то отбрасываются две
+                                    буквы и т.д.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">#4</h5>
+                                <p class="card-text">Зачёркнутая буква (сочетание букв) означает, что её (их) нужно
+                                    убрать из слова.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">#5</h5>
+                                <p class="card-text">Знак "=" обозначает замену одной буквы на другую.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">#6</h5>
+                                <p class="card-text">Цифры рядом с картинкой обозначают, какие буквы взять из слова по
+                                    порядковому номеру или убрать (если они зачёркнуты).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">#7</h5>
+                                <p class="card-text">Если одна или несколько букв находятся внутри другой буквы, то к
+                                    ним добавляется предлог "в".</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">#8</h5>
+                                <p class="card-text">Расположение одного элемента над или под другим означает предлоги
+                                    "над", "под" или "на".</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">#9</h5>
+                                <p class="card-text">Если буквы расположены друг за другом, используются предлоги "за"
+                                    или "перед".</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">#10</h5>
+                                <p class="card-text">Если одна буква составлена из других букв, добавляется предлог
+                                    "из".</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">#11</h5>
+                                <p class="card-text">Если маленькие буквы разбросаны по поверхности большой буквы,
+                                    используется предлог "по".</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">#12</h5>
+                                <p class="card-text">Если буква находится рядом, около или прислонена к другой букве,
+                                    используется предлог "у". Также могут использоваться предлоги "к", "с".</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <button class="btn btn-outline-primary me-3"
+                    type="button"
+                    data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                ← Предыдущее
+            </button>
+            <button class="btn btn-outline-primary"
+                    type="button"
+                    data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                Следующее →
+            </button>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-8 col-12 mb-4">
+            <h1 style="margin-top: 30px;">Ответы на возможные вопросы</h1>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#accordion1" aria-expanded="false" aria-controls="accordion1">
+                            Для чего нужен этот сайт?
+                        </button>
+                    </h2>
+                    <div id="accordion1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Этот сайт создан для того, чтобы обмениваться различными текстовыми головоломками. На данный
+                            момент реализована возможность обмена ребусами (в картинках).
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#accordion2" aria-expanded="false" aria-controls="accordion2">
+                            Для чего нужна регистрация?
+                        </button>
+                    </h2>
+                    <div id="accordion2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Для того, чтобы просматривать, выкладывать ребусы и решать их, требуется регистрация. Без
+                            неё будет видна только эта (главная) страница.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#accordion3" aria-expanded="false" aria-controls="accordion3">
+                            Как сменить тему?
+                        </button>
+                    </h2>
+                    <div id="accordion3" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Для смены темы необходимо войти в аккаунт, перейти в раздел "Профиль", найти пункт
+                            "Настройки". В нём будет размещена кнопка для выбора цвета темы. После следующего входа в
+                            аккаунт тема будет такой, какой Вы выбрали (не сбросится).
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#accordion4" aria-expanded="false" aria-controls="accordion4">
+                            Как удалить аккаунт?
+                        </button>
+                    </h2>
+                    <div id="accordion4" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Для удаления аккаунта необходимо войти в него, перейти в раздел "Профиль", найти пункт
+                            "Опасные действия". В нём будет размещена кнопка для удаления аккаунта. Аккаунт можно
+                            удалить как с сохранением всех созданных ребусов, так и без него.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

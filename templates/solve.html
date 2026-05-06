@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Решение головоломки</title>
+</head>
+<body>
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-sm-6 col-12 mb-4">
+            <h2>Головоломка #{{puzzle.id}}</h2>
+            <img src="/static/img/rebuses/{{ puzzle.id }}.png" alt="rebus" class="img-fluid">
+            {% if not is_solved %}
+            <br><br>
+            <button type="button" class="btn btn-secondary"
+                    data-bs-container="body"
+                    data-bs-toggle="popover"
+                    data-bs-placement="right"
+                    data-bs-content="{{ puzzle.hint }}">
+                Подсказка
+            </button>
+            <br><br>
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.answer.label }}<br>
+                    {{ form.answer(class="form-control", type="text") }}<br>
+                    {% for error in form.answer.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                {% endfor %}
+                </p>
+                <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+            </form>
+            {% else %}
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            {{ puzzle.answer }}
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <i>{{ puzzle.definition }}</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--                <h4 data-bs-container="body"-->
+            <!--                    data-bs-toggle="popover"-->
+            <!--                    data-bs-placement="right"-->
+            <!--                    data-bs-content="{{ definition }}">{{ puzzle.answer }}</h4>-->
+            {% endif %}
+            <div>{{ message }}</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>
