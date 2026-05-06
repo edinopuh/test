@@ -8,23 +8,29 @@
     <title>{{title}}</title>
 </head>
 <body>
-<div style="margin-bottom: 30px; position: sticky; top: 0; z-index: 1000; background-color: dodgerblue;">
+<div style="margin-bottom: 20px; position: sticky; top: 0; z-index: 1000; background-color: dodgerblue;">
     <header>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <h1>
                         <a href="/" style="text-decoration: none; color: white;">
-                            <img src="static/img/logo.png" width="70px" height="70px">
+                            <img src="static/img/logo.png" width="60px" height="60px">
                             Текстовые головоломки. Взгляд сквозь ребусы.
                         </a>
                     </h1>
+                    <h3><a class="btn btn-primary navbar-toggler" type="button" data-bs-toggle="collapse"
+                           data-bs-target="#navbarNav" style="text-decoration: none; color: white;">
+                        <i class="bi bi-list"></i> Меню
+                    </a>
+                    </h3>
                 </div>
             </div>
         </div>
     </header>
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light">
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="d-flex flex-wrap justify-content-center gap-2 w-100">
                     {% if current_user.is_authenticated %}
