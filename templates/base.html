@@ -24,31 +24,35 @@
         </div>
     </header>
     <nav>
-        <div class="row justify-content-evenly">
-            <div class="col-12">
-                <div class="btn-group btn-group-lg" role="group" style="width:100%">
-                    <a class="btn btn-primary" href="/">Главная</a>
-                    {% if current_user.is_authenticated %}
-                    <a class="btn btn-primary" href="/profile">Профиль<i class="bi bi-person"></i></a>
-                    <a class="btn btn-primary" href="/my_puzzles">Мои головоломки<i class="bi bi-lightbulb"></i></a>
-                    <a class="btn btn-primary" href="/create">Создать<i class="bi bi-plus-circle"></i></a>
-                    <div class="btn-group btn-group-lg" role="group">
-                        <a class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                            Решать<i class="bi bi-puzzle"></i>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/all_puzzles">Показать всё</a></li>
-                            <li><a class="dropdown-item" href="/all_not_solved_puzzles">Показать всё, что не решено</a>
-                            </li>
-                            <li><a class="dropdown-item" href="/all_solved_puzzles">Показать всё, что решено</a></li>
-                        </ul>
+        <div class="container-fluid">
+            <div class="row justify-content-evenly">
+                <div class="col-12">
+                    <div class="btn-group btn-group-lg" role="group" style="width:100%">
+                        <a class="btn btn-primary" href="/">Главная</a>
+                        {% if current_user.is_authenticated %}
+                        <a class="btn btn-primary" href="/profile">Профиль<i class="bi bi-person"></i></a>
+                        <a class="btn btn-primary" href="/my_puzzles">Мои головоломки<i class="bi bi-lightbulb"></i></a>
+                        <a class="btn btn-primary" href="/create">Создать<i class="bi bi-plus-circle"></i></a>
+                        <div class="btn-group btn-group-lg" role="group">
+                            <a class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                Решать<i class="bi bi-puzzle"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/all_puzzles">Показать всё</a></li>
+                                <li><a class="dropdown-item" href="/all_not_solved_puzzles">Показать всё, что не
+                                    решено</a>
+                                </li>
+                                <li><a class="dropdown-item" href="/all_solved_puzzles">Показать всё, что решено</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a class="btn btn-primary" href="/logout">Выйти<i class="bi bi-box-arrow-left"></i></a>
+                        {% else %}
+                        <a class="btn btn-primary" href="/register">Зарегистрироваться</a>
+                        <a class="btn btn-primary" href="/login">Войти<i class="bi bi-box-arrow-in-right"></i></a>
+                        {% endif %}
                     </div>
-                    <a class="btn btn-primary" href="/logout">Выйти<i class="bi bi-box-arrow-left"></i></a>
-                    {% else %}
-                    <a class="btn btn-primary" href="/register">Зарегистрироваться</a>
-                    <a class="btn btn-primary" href="/login">Войти<i class="bi bi-box-arrow-in-right"></i></a>
-                    {% endif %}
                 </div>
             </div>
         </div>
