@@ -20,7 +20,6 @@ class User(SqlAlchemyBase, UserMixin):
         'Puzzle',
         foreign_keys='Puzzle.user_id',
         back_populates='user',
-        cascade='all, delete-orphan'
     )  # головоломки, созданные пользователем
     solved_puzzles = orm.relationship(
         'Puzzle',

@@ -246,6 +246,7 @@ def delete_puzzle(puzzle_id):
 
 
 @app.route('/solve/<puzzle_id>', methods=['GET', 'POST'])  # решение головоломки
+@login_required
 def solve_puzzle(puzzle_id):
     solve_form = SolveForm()  # форма для отправки ответа пользователя
     db_sess = db_session.create_session()
