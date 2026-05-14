@@ -9,7 +9,6 @@ from data.solve_form import SolveForm
 from data.user import User
 from data.puzzle import Puzzle
 from data.create_puzzle import CreatePuzzle
-from waitress import serve
 from data.word_definition import get_word_definition
 
 app = Flask(__name__)
@@ -161,6 +160,7 @@ def all_solved_puzzles():
     db_sess = db_session.create_session()
     user = db_sess.get(User, current_user.id)  # получаем пользователя
     puzzles = [p for p in db_sess.get(User, user.id).solved_puzzles]  # все решённые головоломки
+    puzzles.reverse()
     return render_template('all_puzzles.html', puzzles=puzzles, user=user)
 
 
@@ -171,6 +171,7 @@ def all_not_solved_puzzles():
     user = db_sess.get(User, current_user.id)  # получаем пользователя
     solved_ids = [p.id for p in db_sess.get(User, user.id).solved_puzzles]  # id решённых головоломок
     puzzles = db_sess.query(Puzzle.id).filter(~Puzzle.id.in_(solved_ids)).all()  # все нерешённые головоломки
+    puzzles.reverse()
     return render_template('all_puzzles.html', puzzles=puzzles, user=user)
 
 
@@ -219,7 +220,9 @@ def edit_puzzle(puzzle_id):
     if puzzle_form.validate_on_submit():  # если сохраняем изменения
         puzzle = db_sess.get(Puzzle, puzzle_id)
         if puzzle:
-            puzzle.answer = puzzle_form.answer.data  # обновляем ответ и подсказку
+            if puzzle.answer != puzzle_form.answer.data:
+                puzzle.answer = puzzle_form.answer.data  # обновляем ответ и подсказку
+                puzzle.definition = get_word_definition(puzzle.answer)
             puzzle.hint = puzzle_form.hint.data
             db_sess.add(puzzle)
             db_sess.commit()
@@ -269,5 +272,4 @@ def solve_puzzle(puzzle_id):
 
 
 if __name__ == '__main__':
-    # serve(app, host='0.0.0.0',port=5000)
-    app.run(host='127.0.0.1', port=8080)
+    app.run()
