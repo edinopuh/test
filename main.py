@@ -15,7 +15,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 login_manager = LoginManager()
 login_manager.init_app(app)
-global_init('db/puzzles.db')
+global_init('/home/runner/workspace/db/puzzles.db')
 
 
 @app.errorhandler(404)
@@ -114,8 +114,8 @@ def delete_account_with_puzzles(user_id):
     db_sess = db_session.create_session()
     user = db_sess.get(User, user_id)  # получаем пользователя
     for puzzle in user.puzzles:  # проходим по папкам с картинками всех головоломок
-        if os.path.exists(f'static/img/rebuses/{puzzle.id}.png'):  # если файл существует
-            os.remove(f'static/img/rebuses/{puzzle.id}.png')  # удаляем
+        if os.path.exists(f'/home/runner/workspace/static/img/rebuses/{puzzle.id}.png'):  # если файл существует
+            os.remove(f'/home/runner/workspace/static/img/rebuses/{puzzle.id}.png')  # удаляем
         db_sess.delete(puzzle)  # удаление головоломки, к которой относилась эта картинка
     db_sess.delete(user)  # удаление пользователя
     db_sess.commit()
@@ -198,7 +198,7 @@ def add_puzzle():
         puzzle.definition = get_word_definition(puzzle.answer)
         db_sess.commit()
         file = puzzle_form.puzzle.data  # получаем файл
-        file.save(f'static/img/rebuses/{puzzle.id}.png')  # сохраняем в специальную папку
+        file.save(f'/home/runner/workspace/static/img/rebuses/{puzzle.id}.png')  # сохраняем в специальную папку
         return redirect('/my_puzzles')
     return render_template('create_puzzle.html',
                            title='Создание',
@@ -228,7 +228,7 @@ def edit_puzzle(puzzle_id):
             db_sess.commit()
             file = puzzle_form.puzzle.data
             if file is not None:  # если добавили новый файл, сохраняем его (заменяем прошлый)
-                file.save(f'static/img/rebuses/{puzzle.id}.png')
+                file.save(f'/home/runner/workspace/static/img/rebuses/{puzzle.id}.png')
             return redirect('/my_puzzles')
         else:
             abort(404)
@@ -242,7 +242,7 @@ def edit_puzzle(puzzle_id):
 def delete_puzzle(puzzle_id):
     db_sess = db_session.create_session()
     puzzle = db_sess.get(Puzzle, puzzle_id)  # получаем головоломку по id
-    os.remove(f'static/img/rebuses/{puzzle.id}.png')  # удаляем картинку
+    os.remove(f'/home/runner/workspace/static/img/rebuses/{puzzle.id}.png')  # удаляем картинку
     db_sess.delete(puzzle)  # удаляем головоломку
     db_sess.commit()
     return redirect('/my_puzzles')
